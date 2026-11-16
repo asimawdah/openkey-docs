@@ -1,0 +1,96 @@
+---
+title: Download & install
+---
+
+<DownloadPicker layout="page" />
+
+Get the OpenKey app, then optionally connect a [self-hosted server](./server), the [browser extension](./extension), or the [CLI](./cli).
+
+Application id: `com.openselfhosting.openkey` · Org: [OpenSelfHosting](https://github.com/OpenSelfHosting)
+
+Store listings and GitHub Releases roll out per platform. **Google Play and the Microsoft Store are live** — install OpenKey on Android from [the Play listing](https://play.google.com/store/apps/details?id=com.openselfhosting.openkey) or on Windows from [the Microsoft Store listing](https://apps.microsoft.com/detail/9MXNBRPMDT53). The main download button takes you to that system's store; the one beside it hands over the direct build for your system. Official app binaries are also published on [GitHub Releases](https://github.com/OpenSelfHosting/OpenKey/releases). **OpenKey is open source under the MIT License**; the [source code](https://github.com/OpenSelfHosting/OpenKey) and [build instructions](https://github.com/OpenSelfHosting/OpenKey#build-from-source) are public.
+
+## Mobile
+
+### Android {#android}
+
+| Channel | Notes |
+|---------|--------|
+| Google Play {#android-play} | [Get OpenKey on Google Play](https://play.google.com/store/apps/details?id=com.openselfhosting.openkey) — listed by **OpenSelfHosting** as `com.openselfhosting.openkey` |
+| Sideload APK/AAB {#android-apk} | From [GitHub Releases](https://github.com/OpenSelfHosting/OpenKey/releases) (`OpenKey-*-android.apk`) |
+
+### iOS {#ios}
+
+| Channel | Notes |
+|---------|--------|
+| App Store | When listed — search **OpenKey** by OpenSelfHosting |
+| Xcode archive | Local `build_all/ios/` |
+
+Enable **Settings → Security** (Autofill) so OpenKey can fill passwords and passkeys system-wide.
+
+## Desktop
+
+### macOS {#macos}
+
+| Build | Artifact |
+|-------|----------|
+| Apple Silicon {#macos-arm64} | `OpenKey-*-macos-arm64.dmg` / `.zip` from `build_all/macos/` |
+| Intel Chip {#macos-x64} | `OpenKey-*-macos-x64.dmg` / `.zip` |
+| Universal {#macos-universal} | Prefer the arch-matched `.dmg` when available; Mac App Store when listed |
+| Mac App Store {#macos-appstore} | When listed — search **OpenKey** by OpenSelfHosting |
+
+### Windows {#windows}
+
+| Build | Artifact |
+|-------|----------|
+| Microsoft Store {#windows-store} | [Get OpenKey on the Microsoft Store](https://apps.microsoft.com/detail/9MXNBRPMDT53) — recommended for Windows visitors; updates itself |
+| x64 installer {#windows-x64} | `OpenKey-*-windows-x64.exe` · portable `.zip` |
+| Arm64 {#windows-arm64} | When published on GitHub Releases / Microsoft Store |
+
+### Linux {#linux}
+
+| Build | Artifact |
+|-------|----------|
+| AppImage x64 {#linux-appimage-x64} | `OpenKey-*-linux-x64.AppImage` — any glibc distro |
+| AppImage Arm64 {#linux-appimage-arm64} | `OpenKey-*-linux-arm64.AppImage` |
+| `.deb` x64 {#linux-deb-x64} | Debian, Ubuntu, Mint, Pop!_OS (`OpenKey-*-linux-x64.deb`) |
+| `.deb` Arm64 {#linux-deb-arm64} | `OpenKey-*-linux-arm64.deb` |
+| `.rpm` x64 {#linux-rpm-x64} | Fedora, RHEL, openSUSE, Rocky (`OpenKey-*-linux-x64.rpm`) |
+| `.rpm` Arm64 {#linux-rpm-arm64} | `OpenKey-*-linux-arm64.rpm` |
+| `.tar.gz` x64 {#linux-tar-x64} | Portable tarball from `build_all/linux/` |
+| `.tar.gz` Arm64 {#linux-tar-arm64} | Portable tarball (arm64) |
+
+Arch users can `makepkg -si` with the `PKGBUILD` inside the tarball.
+
+Desktop Autofill registers the **native messaging host** used by the [browser extension](./extension). Keep the vault unlocked while filling from the browser.
+
+Official desktop installers are attached to [GitHub Releases](https://github.com/OpenSelfHosting/OpenKey/releases). The app is open source under MIT; its repository [README](https://github.com/OpenSelfHosting/OpenKey#build-from-source) has Flutter build instructions.
+
+## Browser extension
+
+MV3 extension for Chrome, Edge, and Firefox. [Install OpenKey from the Chrome Web Store](https://chromewebstore.google.com/detail/cmebbcnocamcolnedgafbkeelejldoga?utm_source=item-share-cp). For Edge, Firefox, or manual installation, build the extension and load the `dist/` folder:
+
+```bash
+cd openkey_extension
+npm install && npm run build
+```
+
+Then load `dist/` in `chrome://extensions` or Firefox `about:debugging`. Full setup: [Browser extension](./extension).
+
+## Server & CLI
+
+| Package | Install |
+|---------|---------|
+| **Server** | Docker Compose in `openkey_server` — [Server setup](./server) |
+| **CLI** | Node 20+ in `openkey_cli` (`npm link`) — [CLI](./cli) |
+
+Quick local stack: [Quick start](./quick-start).
+
+## After install
+
+1. Create or unlock a vault with a strong master password ([Using the app](./app)).
+2. Optional: point **Settings → Data → Self-hosted server** at your API URL and sync.
+3. Optional (Pro): pair devices with **Nearby** for LAN vault sync without a server — [Nearby guide](./nearby).
+4. On desktop: connect the [extension](./extension) via Autofill / Browser extension settings.
+
+Next: [Using the app](./app) · [Nearby](./nearby) · [Browser extension](./extension) · [Server setup](./server)

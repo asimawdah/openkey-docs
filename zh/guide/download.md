@@ -1,0 +1,98 @@
+---
+title: 下载与安装
+---
+
+<DownloadPicker layout="page" />
+
+获取 OpenKey 应用，然后可选连接[自托管服务器](./server)、[浏览器扩展](./extension)或 [CLI](./cli)。
+
+应用 ID：`com.openselfhosting.openkey` · 组织：[OpenSelfHosting](https://github.com/OpenSelfHosting)
+
+各平台的商店上架与 GitHub Releases 会分批推出。**Google Play 和 Microsoft Store 均已上线** — 在 Android 上可从 [Google Play 商店页面](https://play.google.com/store/apps/details?id=com.openselfhosting.openkey)安装，或在 Windows 上从 [Microsoft Store 商店页面](https://apps.microsoft.com/detail/9MXNBRPMDT53)安装。主下载按钮会把你带到该系统的应用商店，旁边那个按钮则提供直接安装包。官方应用二进制文件也发布在 [GitHub Releases](https://github.com/OpenSelfHosting/OpenKey/releases)。**OpenKey 是 MIT 许可证下的开源应用**；[源代码](https://github.com/OpenSelfHosting/OpenKey)和[构建说明](https://github.com/OpenSelfHosting/OpenKey#build-from-source)均公开可用。其他商店页面可能仍在审核中。
+
+## 移动端
+
+### Android {#android}
+
+| Channel | Notes |
+|---------|--------|
+| Google Play {#android-play} | [在 Google Play 获取 OpenKey](https://play.google.com/store/apps/details?id=com.openselfhosting.openkey) — 由 **OpenSelfHosting** 发布，应用 ID 为 `com.openselfhosting.openkey` |
+| Sideload APK/AAB {#android-apk} | 从 `build_all/android/` 侧载 APK/AAB |
+
+### iOS {#ios}
+
+| Channel | Notes |
+|---------|--------|
+| App Store | 上架后搜索 OpenSelfHosting 的 **OpenKey** |
+| Xcode archive | 本地 `build_all/ios/` |
+
+启用 **设置 → 安全**，以便系统级填充密码与通行密钥。
+
+## 桌面端
+
+### macOS {#macos}
+
+| Build | Artifact |
+|-------|----------|
+| Apple Silicon {#macos-arm64} | `OpenKey-*-macos-arm64.dmg` / `.zip` from `build_all/macos/` |
+| Intel Chip {#macos-x64} | `OpenKey-*-macos-x64.dmg` / `.zip` |
+| Universal {#macos-universal} | Prefer arch-matched `.dmg`; Mac App Store when listed |
+| Mac App Store {#macos-appstore} | When listed |
+
+### Windows {#windows}
+
+| Build | Artifact |
+|-------|----------|
+| x64 installer {#windows-x64} | `OpenKey-*-windows-x64.exe` · portable `.zip` |
+| Arm64 {#windows-arm64} | When published on GitHub Releases / Microsoft Store |
+| Microsoft Store {#windows-store} | [在 Microsoft Store 获取 OpenKey](https://apps.microsoft.com/detail/9MXNBRPMDT53) — 推荐给 Windows 用户；可自动更新 |
+
+### Linux {#linux}
+
+| Build | Artifact |
+|-------|----------|
+| AppImage x64 {#linux-appimage-x64} | `OpenKey-*-linux-x64.AppImage` |
+| AppImage Arm64 {#linux-appimage-arm64} | `OpenKey-*-linux-arm64.AppImage` |
+| `.deb` x64 {#linux-deb-x64} | `OpenKey-*-linux-x64.deb` |
+| `.deb` Arm64 {#linux-deb-arm64} | `OpenKey-*-linux-arm64.deb` |
+| `.rpm` x64 {#linux-rpm-x64} | `OpenKey-*-linux-x64.rpm` |
+| `.rpm` Arm64 {#linux-rpm-arm64} | `OpenKey-*-linux-arm64.rpm` |
+| `.tar.gz` x64 {#linux-tar-x64} | Portable tarball from `build_all/linux/` |
+| `.tar.gz` Arm64 {#linux-tar-arm64} | Portable tarball (arm64) |
+
+Arch: `makepkg -si` with the `PKGBUILD` inside the tarball.
+
+Desktop Autofill registers the **native messaging host** used by the [browser extension](./extension). Keep the vault unlocked while filling from the browser.
+
+### 自行构建桌面版
+
+OpenKey Flutter 应用的源代码以 MIT 许可证公开于 [OpenSelfHosting/OpenKey](https://github.com/OpenSelfHosting/OpenKey)。构建说明见 [README](https://github.com/OpenSelfHosting/OpenKey#build-from-source)；官方桌面安装包可在 [GitHub Releases](https://github.com/OpenSelfHosting/OpenKey/releases) 获取。
+
+## 浏览器扩展
+
+适用于 Chrome、Edge 和 Firefox 的 MV3 扩展。[从 Chrome 网上应用店安装 OpenKey](https://chromewebstore.google.com/detail/cmebbcnocamcolnedgafbkeelejldoga?utm_source=item-share-cp)。对于 Edge、Firefox 或手动安装，请构建扩展并加载 `dist/` 文件夹：
+
+```bash
+cd openkey_extension
+npm install && npm run build
+```
+
+Then load `dist/` in `chrome://extensions` or Firefox `about:debugging`. Full setup: [浏览器扩展](./extension).
+
+## 服务器与 CLI
+
+| Package | Install |
+|---------|---------|
+| **服务器** | Docker Compose in `openkey_server` — [服务器](./server) |
+| **CLI** | Node 20+ in `openkey_cli` (`npm link`) — [CLI](./cli) |
+
+Quick local stack: [Quick start](./quick-start).
+
+## 安装之后
+
+1. Create or unlock a vault with a strong master password ([App](./app)).
+2. Optional: point **Settings → Data → Self-hosted server** at your API URL and sync.
+3. Optional (Pro): pair devices with **Nearby** for LAN vault sync without a server — [Nearby](./nearby).
+4. On desktop: connect the [extension](./extension) via Autofill / Browser extension settings.
+
+下一步：[使用应用](./app) · [Nearby](./nearby) · [浏览器扩展](./extension) · [服务器安装](./server)
